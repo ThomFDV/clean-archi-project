@@ -1,12 +1,12 @@
 export class ProductCatalogEntity {
-    private _id!: number;
+    private _id!: string;
     private _name!: string;
     private _description!: string;
     private _category!: string;
     private _details!: any;
 
 
-    constructor(id: number, name: string, description: string, category: string, details: any) {
+    constructor(id: string, name: string, description: string, category: string, details: any) {
         this._id = id;
         this._name = name;
         this._description = description;
@@ -15,11 +15,11 @@ export class ProductCatalogEntity {
     }
 
 
-    get id(): number {
+    get id(): string {
         return this._id;
     }
 
-    set id(value: number) {
+    set id(value: string) {
         this._id = value;
     }
 
