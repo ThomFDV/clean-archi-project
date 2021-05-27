@@ -4,10 +4,8 @@ import {ProductCatalogDAO} from "../DAO/ProductCatalogDAO";
 
 export class ConsultProductRoute {
 
-    public consultProduct: ConsultProduct = new ConsultProduct();
 
-
-    constructor() {
+    constructor(private readonly consultProduct: ConsultProduct) {
         console.log(this.consultProduct);
     }
 
@@ -20,7 +18,7 @@ export class ConsultProductRoute {
                 })
             })
 
-        app.route('/product').post(this.consultProduct.addNewProduct);
-        app.route('/product/:productId').get(this.consultProduct.getProductCatalog);
+        // app.route('/product').post(this.consultProduct.add);
+        app.route('/product/:productId').get(this.consultProduct.getProductCatalog.bind(this.consultProduct));
     }
 }

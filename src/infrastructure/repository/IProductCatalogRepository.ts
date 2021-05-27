@@ -1,5 +1,5 @@
 import {ProductCatalogEntity} from "../../domain/entity/ProductCatalogEntity";
 
 export interface IProductCatalogRepository {
-    getProductCatalogById(id?: string): ProductCatalogEntity;
+    getProductCatalogById(id?: string): Promise<ProductCatalogEntity>;
 }

@@ -1,22 +1,24 @@
 import { Request, Response } from 'express';
 import {PriceDAO} from "../../infrastructure/DAO/PriceDAO";
 import {SellHistoryDAO} from "../../infrastructure/DAO/SellHistoryDAO";
-import {ProductCatalogDAO} from "../../infrastructure/DAO/productCatalogDAO";
+import {ProductCatalogDAO} from "../../infrastructure/DAO/ProductCatalogDAO";
 import {SellHistoryEntity} from "../entity/SellHistoryEntity";
 
 export class ConsultProduct {
 
-    productCatalogDAO!: ProductCatalogDAO;
-    priceDAO: PriceDAO;
-    sellHistoryDAO: SellHistoryDAO;
+    private readonly productCatalogDAO: ProductCatalogDAO;
+    private readonly priceDAO: PriceDAO;
+    private readonly sellHistoryDAO: SellHistoryDAO;
 
     constructor(productCatalogDAO: ProductCatalogDAO, priceDAO: PriceDAO, sellHistory: SellHistoryDAO) {
         this.productCatalogDAO = productCatalogDAO;
         this.priceDAO = priceDAO;
         this.sellHistoryDAO = sellHistory;
+        console.log({"this.productCatalogDAO " : this.productCatalogDAO});
     }
 
     public getProductCatalog(req: Request, res: Response) {
+        console.log({"this.productCatalogDAO " : this.productCatalogDAO});
         const productId = req.params.productId;
         const userId = req.query.userId;
         const product = this.productCatalogDAO.getProductCatalogById(productId);
